@@ -6,12 +6,12 @@ use IEEE.std_logic_1164.all;
 
 entity multiplexorEntradas is
     port (
-        y : out std_logic; --solo hay una salida
-        W,X,Y,Z : in std_logic;
-        prueba : in std_logic_vector(1 downto 0)
+        entrada : out std_logic; --de todas las entradas solo debe salir una
+        W,X,Y,Z : in std_logic; --todas las entradas
+        prueba : in std_logic_vector(1 downto 0) --viene de la memoria
     ); --prueba solo me dira cual de las cuatro entradas es la que se necesita ahora,
        --independientemente de si su valor es positivo o negativo, la necesitamos 
-       --mandar para ver cuales son las ligas y salidas (falsa o verdadera) correspondientes 
+       --para saber cual es la liga/salida correspondiente (la falsa o la verdadera?)
 end entity;
 
 architecture arch of multiplexorEntradas is
@@ -26,7 +26,7 @@ begin
     --auxSelVect (prueba) = 00, 01, 10, 11
 
     -- La selección de entrada a poner en la salida..
-    y <= W when auxSelVect = "00" else
+    entrada <= W when auxSelVect = "00" else
         X when auxSelVect = "01" else
         Y when auxSelVect = "10" else
         Z when auxSelVect = "11";
