@@ -23,6 +23,6 @@ begin
     --auxSel (entrada) = 0, 1
 
     --La selección de liga a poner en la salida..
-    salida <= salidafalsa when auxSel = "0" else
-        salidaverdadera when auxSel = "1" else;
+    salida <= salidafalsa when auxSel = '0' else
+        salidaverdadera when auxSel = '1';
 end architecture;
