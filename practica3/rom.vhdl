@@ -5,16 +5,16 @@ use ieee.std_logic_unsigned.ALL;
 --entra ESTADO PRESENTE o DIRECCION [6] --necesitas un registro que te junte ESTADO SIGUIENTE+ENTRADAS y saque el ESTADO PRESENTE
 --sale LIGA+SALIDAS [9], LIGA[3], SALIDAS[6]
 
-ENTITY practica3 IS
+ENTITY practicaM IS
 	PORT(
 		addr : IN std_logic_vector(5 DOWNTO 0); --0:5 incluye el estado presente + entradas x,y,z
-		data : OUT std_logic_vector(8 DOWNTO 0); --6:14 incluye la liga y las salidas s0-s5
+		--data : OUT std_logic_vector(8 DOWNTO 0); --6:14 incluye la liga y las salidas s0-s5
 		salidas : OUT std_logic_vector(5 DOWNTO 0);
 		liga : OUT std_logic_vector(2 DOWNTO 0)
 	);
-END practica3;
+END practicaM;
 
-ARCHITECTURE behavioral OF practica3 IS
+ARCHITECTURE behavioral OF practicaM IS
 	TYPE mem_rom IS ARRAY(0 TO 63) OF std_logic_vector(8 DOWNTO 0); --memoria/matriz/ROM 64x15
 	SIGNAL data_out : mem_rom; --declara data_out del tipo memoria rom
 BEGIN
@@ -85,7 +85,7 @@ BEGIN
 	data_out(63) <= "000111111";
 
 	PROCESS(addr) BEGIN
-		data <= data_out(conv_integer(addr)); --casteo de address a unsigned, despues a entero, y despues se saca el valor en la posicion [address] de la matriz data_out
+		--data <= data_out(conv_integer(addr)); --casteo de address a unsigned, despues a entero, y despues se saca el valor en la posicion [address] de la matriz data_out
 		liga <= data_out(conv_integer(addr))(8 DOWNTO 6); --lo mismo pero solo guardamos los ultimos 3 que corresponden a liga
 		salidas <= data_out(conv_integer(addr))(5 DOWNTO 0); --lo mismo pero solo guardamos los primeros 5 que corresponden a las salidas
 		--salidas <= data_out(conv_integer(unsigned(addr)))(5 DOWNTO 0);
