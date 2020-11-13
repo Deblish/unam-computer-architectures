@@ -8,8 +8,8 @@ ENTITY practica5 IS
 		prueba : OUT std_logic_vector(2 DOWNTO 0); --va a multiplexorEntradas
 		VF : OUT std_logic; --va a un XOR
 		liga : OUT std_logic_vector(2 DOWNTO 0); --va a multiplexorPreregistro
-		salidacarga : OUT std_logic_vector(3 DOWNTO 0); --va a multiplexorSalidas
-		salidaincrementa : OUT std_logic_vector(3 DOWNTO 0) --va a multiplexorSalidas
+		salidaincrementa : OUT std_logic_vector(3 DOWNTO 0); --va a multiplexorSalidas
+		salidacarga : OUT std_logic_vector(3 DOWNTO 0) --va a multiplexorSalidas
 	);
 END practica5;
 
