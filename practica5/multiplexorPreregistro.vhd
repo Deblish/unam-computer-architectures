@@ -1,6 +1,7 @@
 --Multiplexor 2 a 1, multiplexorPreregistro
 library IEEE;
 use IEEE.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity multiplexorPreregistro is
     port (
@@ -10,17 +11,20 @@ entity multiplexorPreregistro is
     ); --incrementa solo me dira si cargo o incremento (estado presente + 1, aka N+1)
 end entity;
 
-architecture arch of multiplexorLigas is
+architecture arch of multiplexorPreregistro is
 
     -- Señal auxiliar para hacer más legible la selección.
     signal auxSel : std_logic;
+     signal nmasuno : std_logic_vector (2 downto 0);  
 
 begin
     
     auxSel <= incrementa; 
     --auxSel (incrementa) = 0, 1
+     
+     nmasuno <= std_logic_vector(unsigned(n) + 1);
 
     --La selección de salida..
     salida <= carga when auxSel = '0' else
-        std_logic_vector(to_unsigned(to_integer(unsigned(n)) + 1, 3)) when auxSel = '1';
+        nmasuno when auxSel = '1';
 end architecture;
